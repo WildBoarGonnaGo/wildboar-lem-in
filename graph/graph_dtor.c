@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   graph_dtor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/11 17:10:14 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/11 18:18:06 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	graph_dtor(t_graph **me, void (*del)(void *))
 {
-	if (!del)
-		return ;
-	del(lst);
+	int	i;
+
+	i = -1;
+	while (++i < (*me)->v)
+		delete_bag(&(*me)->adj[i], del);
 }

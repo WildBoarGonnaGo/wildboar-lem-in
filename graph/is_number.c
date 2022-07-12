@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   is_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/13 02:25:18 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/13 02:25:19 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph_ctor_in.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int		is_number(char *line)
 {
-	if (!del)
-		return ;
-	del(lst);
+	int	i;
+
+	i = -1;
+	while(ft_isdigit(line[++i]))
+		;
+	if (!line[i])
+		return (1);
+	else
+		return (0);
 }

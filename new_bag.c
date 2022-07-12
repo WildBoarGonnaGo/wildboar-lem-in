@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   new_bag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/25 19:00:56 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/26 19:48:10 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "new.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_st_bag	*new_bag(void)
 {
-	if (!del)
-		return ;
-	del(lst);
+	t_st_bag	*res;
+
+	res = (t_st_bag *)malloc(sizeof(t_st_bag));
+	if (!res)
+		err_println(12);
+	st_bag_ctor(&res);
+	return (res);
 }

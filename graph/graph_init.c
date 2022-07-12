@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   graph_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/13 02:20:32 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/13 02:20:34 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph_ctor_in.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	graph_init(t_graph **me, int *num)
 {
-	if (!del)
-		return ;
-	del(lst);
+	(*me)->v = 0;
+	(*me)->e = 0;
+	(*me)->start = -2;
+	(*me)->end = -2;
+	(*me)->ants = 0;
+	(*me)->adj = NULL;
+	(*me)->size = 0;
+	*num = 0;
+	(*me)->state = 0;
 }

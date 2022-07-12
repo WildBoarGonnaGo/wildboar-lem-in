@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lchantel <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/30 10:53:46 by lchantel          #+#    #+#              #
-#    Updated: 2020/05/17 06:39:40 by lchantel         ###   ########.fr        #
+#   Updated: 2022/06/27 15:31:13 by                  ###   ########.fr       # #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,8 @@ BONUS_SRC	= 			\
 	ft_lstiter.c		\
 	ft_lstmap.c			\
 
-CC			= clang
-WARNS		= -Wall -Wextra -Werror
+CC			= gcc
+WARNS		= -Wall -Wextra -Werror -g -O0
 MAIN_OBJS	= $(SRC:.c=.o)
 BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 HEADER_DIR	= ./

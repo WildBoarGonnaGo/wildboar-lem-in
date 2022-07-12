@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   has_next.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/26 20:10:03 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/27 09:46:02 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "bag.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	has_next(const t_st_bag_iterator *self)
 {
-	if (!del)
-		return ;
-	del(lst);
+	return (self->it->next != NULL);
 }

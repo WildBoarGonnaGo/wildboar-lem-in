@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   delete_array2d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/13 02:27:31 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/13 02:27:32 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph_ctor_in.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	delete_array2d(void **mem)
 {
-	if (!del)
-		return ;
-	del(lst);
+	int	i;
+
+	i = -1;
+	while(mem[++i])
+	{
+		free(mem[i]);
+		mem[i] = NULL;
+	}
+	free(mem);
+	mem = NULL;
 }

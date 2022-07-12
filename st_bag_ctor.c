@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   st_bag_ctor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/25 23:03:22 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/26 18:48:32 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "bag.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	st_bag_ctor(t_st_bag **self)
 {
-	if (!del)
+	if (!self || !*self)
 		return ;
-	del(lst);
+	(*self)->node = NULL;
+	(*self)->size = 0;
+	(*self)->begin = NULL;
+	(*self)->end = NULL;
+	(*self)->state = 0;
 }

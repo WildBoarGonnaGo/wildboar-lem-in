@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   t_st_bag_iterator_dtor.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/26 20:07:57 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/26 20:09:41 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "bag.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	t_st_bag_iterator_dtor(t_st_bag_iterator **self)
 {
-	if (!del)
-		return ;
-	del(lst);
+	(*self)->it = NULL;
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   delete_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/11 18:11:09 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/11 18:15:47 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	delete_graph(t_graph **self, void (*del)(void *))
 {
-	if (!del)
-		return ;
-	del(lst);
+	graph_dtor(self, del);
+	free(*self);
+	*self = NULL;
 }

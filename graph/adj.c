@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   adj.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/03 20:31:17 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/03 20:35:13 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_st_bag	*adj(const t_graph *me, int v)
 {
-	if (!del)
-		return ;
-	del(lst);
+	validate_vertex(me, v);
+	return (me->adj[v]);
 }

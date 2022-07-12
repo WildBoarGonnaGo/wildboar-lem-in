@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   del_list2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/11 21:12:06 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/11 21:12:09 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "bag.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	del_list2(void *item)
 {
-	if (!del)
-		return ;
-	del(lst);
+	t_list	*data;
+
+	data = (t_list *)item;
+	if (data->content)
+	{
+		free(data->content);
+		data->content = NULL;
+	}
+	free(item);
+	item = NULL;
 }

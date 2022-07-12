@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   new_graph.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/11 14:37:38 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/11 16:24:25 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./graph.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_graph	*new_graph()
 {
-	if (!del)
-		return ;
-	del(lst);
+	t_graph	*res;
+
+	res = (t_graph *)malloc(sizeof(t_graph));
+	if (!res)
+		err_println(ENOMEM);
+	graph_ctor_in(&res);
+	return (res);
 }

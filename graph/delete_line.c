@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   delete_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/07/13 02:31:48 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/13 02:32:21 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph_ctor_in.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	delete_line(char **line)
 {
-	if (!del)
-		return ;
-	del(lst);
+	if (!line || !*line)
+		err_println(EACCES);
+	free(*line);
+	*line = NULL;
 }

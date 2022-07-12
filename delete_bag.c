@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   delete_bag.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/25 22:56:08 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/25 23:06:09 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "new.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	delete_bag(t_st_bag **item, void (*del)(void *))
 {
-	if (!del)
+	if (!item || !*item)
 		return ;
-	del(lst);
+	st_bag_dtor(item, del);
+	free(*item);
+	*item = NULL;
 }

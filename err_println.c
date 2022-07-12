@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   err_println.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 11:01:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 15:54:02 by                  ###   ########.fr       */
+/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
+/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "new.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	err_println(int errnum)
 {
-	if (!del)
-		return ;
-	del(lst);
+	ft_putstr_fd("lem-in: error: ", 2);
+	ft_putendl_fd(strerror(errnum), 2);
+	exit (-1);
 }
