@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   stack_ctor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/09/06 17:29:32 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/06 17:39:34 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "stack.h"
 
-void	err_println(int errnum)
+void	stack_ctor(t_stack **self)
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
+	(*self)->node = NULL;
+	(*self)->n = 0;
 }

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   is_empty.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/09/07 00:21:20 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/07 00:21:22 by lchantel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "stack.h"
 
-void	err_println(int errnum)
+int	stack_is_empty(t_stack *self)
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
+	return (!self->n);
 }

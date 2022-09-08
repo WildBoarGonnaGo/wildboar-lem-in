@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/09/06 17:11:40 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/07 17:32:15 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#ifndef STACK_H
+# define STACK_H
+# include "../libft/libft.h"
+# include "../new.h"
 
-void	err_println(int errnum)
+typedef struct	s_stack
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
-}
+	t_list	*node;
+	int		n;
+}	t_stack;
+
+void	stack_ctor(t_stack **self);
+t_stack	*new_stack();
+void	stack_dtor(t_stack **self);
+void	delete_stack(t_stack **self);
+int		stack_is_empty(t_stack *self);
+void	*pop(t_stack **self);
+void	*peek(t_stack *self);
+void	push(t_stack **self, void *item);
+
+#endif

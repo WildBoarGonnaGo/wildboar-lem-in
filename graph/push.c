@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/09/07 13:27:40 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/07 17:36:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "stack.h"
 
-void	err_println(int errnum)
+void	push(t_stack **self, void *item)
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
+	t_list	*new_lst;
+
+	new_lst = ft_lstnew(item);
+	ft_lstadd_front(&(*self)->node, new_lst);
+	++(*self)->n;
 }

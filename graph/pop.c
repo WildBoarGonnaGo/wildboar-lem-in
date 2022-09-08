@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/09/07 00:22:42 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/07 13:23:54 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "stack.h"
 
-void	err_println(int errnum)
+void	*pop(t_stack **self)
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
+	t_list	*member;
+	void	*item;
+
+	member = (*self)->node;
+	item = (*self)->node->content;
+	if (stack_is_empty(*self))
+		err_println(EFAULT);
+	if ((*self)->node->next)
+		(*self)->node = (*self)->node->next;
+	--(*self)->n;
+	ft_lstdelone(member, del_list);
+	return (item);
 }

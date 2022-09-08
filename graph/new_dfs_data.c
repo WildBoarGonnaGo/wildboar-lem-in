@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_println.c                                      :+:      :+:    :+:   */
+/*   new_dfs_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 20:58:24 by lchantel          #+#    #+#             */
-/*   Updated: 2022/06/27 09:43:27 by lchantel         ###   ########.fr       */
+/*   Created: 2022/07/14 23:55:09 by lchantel          #+#    #+#             */
+/*   Updated: 2022/07/14 23:59:44 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "depth_first_search.h"
 
-void	err_println(int errnum)
+t_dfs_data	*new_dfs_data(const t_graph *tgt, int src)
 {
-	ft_putstr_fd("\nlem-in: error: ", 2);
-	ft_putendl_fd(strerror(errnum), 2);
-	exit (-1);
+	t_dfs_data	*res;
+
+	res = (t_dfs_data *)malloc(sizeof(t_dfs_data));
+	if (!res)
+		err_println(ENOMEM);
+	dfs_ctor(&res, tgt, src);
+	return (res);
 }
