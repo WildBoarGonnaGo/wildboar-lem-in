@@ -12,6 +12,7 @@
 
 #include "graph/depth_first_search.h"
 #include "graph/stack.h"
+#include "queue/queue.h"
 #include <stdio.h>
 
 int	check_prog_input(int argc, char **input)
@@ -82,24 +83,26 @@ int main(int argc, char *argv[]) {
 	free(graph_str);
 	delete_dfs_data(&graph_rim);
 
-	//stack test
-	test_stack_arr = (int *)malloc(sizeof(int) * 10);
+	//queue test
+	test_queue_arr = (int *)malloc(sizeof(int) * 10);
 	for (int i = 0; i < 10; ++i)
 		test_stack_arr[i] = i + 1;
-	test_stack = new_stack();
+	test_queue = new_queue();
 	for (int i = 0; i < 10; ++i)
-		push(&test_stack, &test_stack_arr[i]);
-	printf("\nis test stack empty %s\n", stack_is_empty(test_stack) ? "true" : "false");
+		enqueue(&test_queue, &test_queue_arr[i]);
+	printf("\nis test queue empty %s\n", queue_is_empty(test_queue) ? "true" : "false");
 	printf("stack elements:");
 	for (int i = 0; i < 10; ++i)
 	{
-		int *aux = (int *)pop(&test_stack);
+		int *aux = (int *)dequeue(&test_queue);
 		printf(" %d", *aux);
 	}
-	printf("\nis test stack empty %s\n", stack_is_empty(test_stack) ? "true" : "false");
-	delete_stack(&test_stack);
-	free(test_stack_arr);
+	printf("\nis test stack empty %s\n", queue_is_empty(test_queue) ? "true" : "false");
+	delete_queue(&test_queue);
+	free(test_queue_arr);
+
 	test_stack_arr = NULL;
+	test_queue_arr = NULL;
 	free(graph_str);
 	graph_str = NULL;
 	return (0);

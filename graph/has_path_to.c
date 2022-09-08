@@ -12,13 +12,14 @@
 
 #include "depth_first_search.h"
 
-void		validate_vertex(t_dfs_data *self, int v)
+void		priv_validate_vertex(t_dfs_data *self, int v)
 {
 	if (v < 0 || v > self->count)
-		err_println("")
+		err_println_str("no such vertex in graph");
 }
 
 int			has_path_to(t_dfs_data *self, int v)
 {
-
+    priv_validate_vertex(self, v);
+    return (self->marked[v]);
 }

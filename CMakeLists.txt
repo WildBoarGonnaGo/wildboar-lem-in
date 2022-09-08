@@ -20,10 +20,13 @@ add_executable(${PROJECT_NAME} add.c delete_bag.c
         graph/is_number.c graph/line_analisys.c graph/mark_end.c graph/mark_start.c
         graph/new_dfs_data.c graph/new_graph.c graph/new_stack.c graph/peek.c graph/pop.c
         graph/push.c graph/stack_ctor.c graph/stack_dtor.c graph/parse_line.c
-        graph/to_string.c graph/validate_vertex.c )
+        graph/to_string.c graph/validate_vertex.c
+        queue/delete_queue.c queue/dequeue.c queue/enqueue.c queue/new_queue.c
+        queue/peek.c queue/queue_ctor.c queue/queue_dtor.c queue/stack_is_empty.c)
 target_link_libraries(${PROJECT_NAME} PUBLIC -lft)
 target_link_directories(${PROJECT_NAME} PUBLIC libft)
 target_include_directories(${PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/libft
         ${PROJECT_SOURCE_DIR}/gnl
-        ${PROJECT_SOURCE_DIR}/graph)
+        ${PROJECT_SOURCE_DIR}/graph
+        ${PROJECT_SOURCE_DIR}/queue)

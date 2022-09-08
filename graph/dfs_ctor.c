@@ -26,16 +26,26 @@ void	dfs(t_dfs_data **self, const t_graph *tgt, int src)
 		lurker = next(&roll);
 		chest = (t_data *)lurker->content;
 		if (!(*self)->marked[chest->indx])
-			dfs(self, tgt, chest->indx);
+        {
+            (*self)->edge_to[chest->indx] = src;
+            dfs(self, tgt, chest->indx);
+        }
 	}
 	delete_bag_iterator(&roll);
 }
 
 void	dfs_ctor(t_dfs_data **self, const t_graph *tgt, int src)
 {
+    int i;
+
+    i = -1;
 	validate_vertex(tgt, src);
 	(*self)->marked = (unsigned short *)malloc(
 			sizeof(unsigned short) * tgt->v);
+    (*self)->edge_to = (int *)malloc(
+            sizeof(int) * tgt->v);
+    while (++i < tgt->v)
+        (*self)->edge_to[i] = -1;
 	if (!(*self)->marked)
 		err_println(ENOMEM);
 	(*self)->count = 0;
