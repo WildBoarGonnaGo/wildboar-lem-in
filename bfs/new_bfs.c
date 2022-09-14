@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_number.c                                       :+:      :+:    :+:   */
+/*   new_bfs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 02:23:59 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/12 11:45:55 by                  ###   ########.fr       */
+/*   Created: 2022/09/09 14:45:39 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/09 14:54:21 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph_ctor_in.h"
+#include "bfs.h"
 
-void	get_number(t_graph **me, char *line)
+t_bfs	*new_bfs(t_graph *graph, int s)
 {
-	int	i;
-	int	j;
+	t_bfs	*res;
 
-	i = -1;
-	while (line[++i] && ft_isdigit(line[i]))
-		;
-	if (line[i])
-		err_println_str("wrong syntax: invalid number of ants");
-	i = ft_atoi(line);
-	(*me)->ants = (int *)malloc(sizeof(int) * i);
-	j = -1;
-	(*me)->ants_num = i;
-	while (++j < i)
-		(*me)->ants[j] = j + 1;
+	res = (t_bfs *)malloc(sizeof(t_bfs));
+	if (!res)
+		err_println(ENOMEM);
+	bfs_ctor(&res, graph, s);
+	return (res);
 }

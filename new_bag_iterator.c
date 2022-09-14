@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "bag.h"
 
 t_st_bag_iterator	*new_bag_iterator(const t_st_bag *item) {
 

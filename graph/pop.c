@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 00:22:42 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/07 13:23:54 by                  ###   ########.fr       */
+/*   Updated: 2022/09/08 20:35:46 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,14 @@ void	*pop(t_stack **self)
 		err_println(EFAULT);
 	if ((*self)->node->next)
 		(*self)->node = (*self)->node->next;
+	else
+	{
+		ft_lstdelone((*self)->node, del_list);
+		(*self)->node = NULL;
+	}
 	--(*self)->n;
-	ft_lstdelone(member, del_list);
+	if ((*self)->node)
+		ft_lstdelone(member, del_list);
+	member = NULL;
 	return (item);
 }

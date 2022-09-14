@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "bag.h"
 
 void	delete_bag(t_st_bag **item, void (*del)(void *))
 {

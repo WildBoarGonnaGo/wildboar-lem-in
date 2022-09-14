@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:00:34 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/12 22:14:29 by                  ###   ########.fr       */
+/*   Updated: 2022/09/13 22:19:06 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	delete_elem(void *data)
 	list_data = NULL;
 }
 
-t_data	*t_data_copy(const t_data *src)
+t_data	*t_data_copy(t_data *src)
 {
 	t_data	*dst;
 
@@ -36,6 +36,23 @@ t_data	*t_data_copy(const t_data *src)
 	dst->indx = src->indx;
 	dst->x = src->x;
 	dst->y = src->y;
+	if (src->name)
+	{
+		dst->name = ft_strdup(src->name);
+		free(src->name);
+		src->name = NULL;
+	}
+	else
+		dst->name = NULL;
+	dst->ants = new_queue();
+	if (src->ants)
+	{
+		while (src->ants && !queue_is_empty(src->ants))
+			enqueue(&dst->ants, dequeue(&src->ants));
+		delete_queue(&src->ants);
+	}
+	else
+		dst->ants = NULL;
 	return (dst);
 }
 

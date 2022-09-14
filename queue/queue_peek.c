@@ -1,7 +1,7 @@
 
 #include "queue.h"
 
-void	*peek(t_queue *self)
+void	*queue_peek(t_queue *self)
 {
 	return (self->node->content);
 }

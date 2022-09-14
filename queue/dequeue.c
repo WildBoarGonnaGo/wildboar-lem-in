@@ -8,11 +8,17 @@ void	*dequeue(t_queue **self)
 
 	member = (*self)->node;
 	item = (*self)->node->content;
-	if (stack_is_empty(*self))
+	if (queue_is_empty(*self))
 		err_println(EFAULT);
 	if ((*self)->node->next)
 		(*self)->node = (*self)->node->next;
+	else
+	{
+		free((*self)->node);
+		(*self)->node = NULL;
+	}
 	--(*self)->size;
-	ft_lstdelone(member, del_list);
+	if ((*self)->node)
+		ft_lstdelone(member, del_list);
 	return (item);
 }

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_number.c                                       :+:      :+:    :+:   */
+/*   bfs_path_to.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 02:23:59 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/12 11:45:55 by                  ###   ########.fr       */
+/*   Created: 2022/09/10 10:51:18 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/14 13:07:33 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph_ctor_in.h"
+#include "bfs.h"
 
-void	get_number(t_graph **me, char *line)
+t_stack	*bfs_path_to(t_bfs *self, int *v)
 {
-	int	i;
-	int	j;
+	t_stack	*res;
+	int		i;
 
-	i = -1;
-	while (line[++i] && ft_isdigit(line[i]))
-		;
-	if (line[i])
-		err_println_str("wrong syntax: invalid number of ants");
-	i = ft_atoi(line);
-	(*me)->ants = (int *)malloc(sizeof(int) * i);
-	j = -1;
-	(*me)->ants_num = i;
-	while (++j < i)
-		(*me)->ants[j] = j + 1;
+	bfs_validate_vertex(self, *v);
+	if (!bfs_has_path_to(self, *v))
+		return (NULL);
+	res = new_stack();
+	i = *v;
+	push(&res, v);
+	while (self->dist_to[i])
+	{
+		push(&res, &self->edge_to[i]);
+		i = self->edge_to[i];
+	}
+	return (res);
 }

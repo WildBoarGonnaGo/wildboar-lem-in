@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "bag.h"
 
 void	t_st_bag_iterator_ctor(t_st_bag_iterator **self,
 			const t_st_bag *src)

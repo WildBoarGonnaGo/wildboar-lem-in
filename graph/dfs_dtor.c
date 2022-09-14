@@ -15,6 +15,8 @@
 void		dfs_dtor(t_dfs_data **self)
 {
 	free((*self)->marked);
+	free((*self)->edge_to);
 	(*self)->marked = NULL;
+	(*self)->edge_to = NULL;
 	(*self)->count = 0;
 }

@@ -13,7 +13,7 @@
 #include "../gnl/get_next_line.h"
 #include "graph_ctor_in.h"
 
-void	graph_ctor_in(t_graph **me)
+void	 graph_ctor_in(t_graph **me)
 {
 	char	*line;
 	int		num;

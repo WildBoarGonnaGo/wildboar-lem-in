@@ -6,13 +6,13 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:43:32 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/11 21:17:23 by                  ###   ########.fr       */
+/*   Updated: 2022/09/13 10:56:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPH_H
 # define GRAPH_H
-# include "../new.h"
+# include "../bag.h"
 
 typedef struct s_graph
 {
@@ -20,9 +20,10 @@ typedef struct s_graph
 	int			e;
 	int			start;
 	int			end;
-	int			ants;
+	int			*ants;
 	int			size;
 	int			state;
+	int			ants_num;
 	t_st_bag	**adj;
 }	t_graph;
 
@@ -34,5 +35,7 @@ t_st_bag 	*adj(const t_graph *me, int v);
 char		*to_string(const t_graph *me);
 t_graph		*new_graph();
 void		delete_graph(t_graph **self, void (*del)(void *));
+void		delete_graph_2(t_graph **self);
+void		graph_dtor_2(t_graph **self);
 
 #endif

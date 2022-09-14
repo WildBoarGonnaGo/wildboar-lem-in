@@ -14,6 +14,7 @@
 # define STACK_H
 # include "../libft/libft.h"
 # include "../new.h"
+# include "../bag.h"
 
 typedef struct	s_stack
 {

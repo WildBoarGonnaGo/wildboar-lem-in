@@ -15,6 +15,6 @@
 
 void	stack_dtor(t_stack **self)
 {
-	ft_lstclear(&(*self)->node, del_list);
+	ft_lstclear(&(*self)->node, del_list2);
 	(*self)->n = 0;
 }
