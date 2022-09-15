@@ -6,17 +6,16 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:30:37 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/12 14:45:08 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 17:06:19 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graph_ctor_in.h"
 
-void	add_vertex(t_graph **me, char *line)
+t_data	*verify_data(t_graph **me, char *line)
 {
-	t_data 	*data;
+	t_data	*data;
 	char	**str;
-	int		i;
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
@@ -36,6 +35,15 @@ void	add_vertex(t_graph **me, char *line)
 	if ((*me)->v >= (*me)->size)
 		alloc_array(me);
 	(*me)->adj[(*me)->v] = new_bag();
+	return (data);
+}
+
+void	add_vertex(t_graph **me, char *line)
+{
+	t_data	*data;
+	int		i;
+
+	data = verify_data(me, line);
 	if ((*me)->start == -1)
 	{
 		(*me)->start = (*me)->v;

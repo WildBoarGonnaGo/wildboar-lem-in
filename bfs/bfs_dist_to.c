@@ -12,7 +12,7 @@
 
 #include "bfs.h"
 
-int		bfs_dist_to(t_bfs *self, int v)
+int	bfs_dist_to(t_bfs *self, int v)
 {
 	bfs_validate_vertex(self, v);
 	return (self->dist_to[v]);

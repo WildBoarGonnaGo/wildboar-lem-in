@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:00:34 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/13 22:19:06 by                  ###   ########.fr       */
+/*   Updated: 2022/09/13 22:22:33 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_data	*t_data_copy(t_data *src)
 {
 	t_data	*dst;
 
-	dst = (t_data *)malloc(sizeof(t_data));;
+	dst = (t_data *)malloc(sizeof(t_data));
 	dst->indx = src->indx;
 	dst->x = src->x;
 	dst->y = src->y;
@@ -61,7 +61,6 @@ void	st_bag_copy_assign(t_st_bag **self, const t_st_bag *that)
 	t_list	*to_be_freed;
 	t_list	*roll;
 
-	//(*self)->size = that->size;
 	to_be_freed = (*self)->node;
 	if (to_be_freed)
 		ft_lstclear(&to_be_freed, delete_elem);

@@ -6,14 +6,13 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 01:07:14 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/08 18:55:44 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 15:22:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_DEPTH_FIRST_SEARCH_H
-# define LEM_IN_DEPTH_FIRST_SEARCH_H
-
-#include "graph.h"
+#ifndef DEPTH_FIRST_SEARCH_H
+# define DEPTH_FIRST_SEARCH_H
+# include "graph.h"
 
 typedef struct s_dfs_data
 {
@@ -28,4 +27,4 @@ void		dfs_dtor(t_dfs_data **self);
 void		delete_dfs_data(t_dfs_data **self);
 int			has_path_to(t_dfs_data *self, int v);
 
-# endif
+#endif

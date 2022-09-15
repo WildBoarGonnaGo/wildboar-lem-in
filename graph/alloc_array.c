@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:28:40 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/13 02:29:47 by lchantel         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:03:47 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	alloc_array(t_graph **me)
 	i = -1;
 	if (!(*me)->size)
 		(*me)->adj = (t_st_bag **)malloc(sizeof(t_st_bag *)
-										 * ++(*me)->size);
+				* ++(*me)->size);
 	else
 	{
 		oldsize = (*me)->size;

@@ -14,5 +14,5 @@
 
 void	*peek(t_stack *self)
 {
-	return self->node->content;
+	return (self->node->content);
 }

@@ -6,13 +6,22 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:55:12 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/13 22:38:42 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 14:38:28 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bfs.h"
 #include "../queue/queue.h"
 #include <limits.h>
+
+void	bfs_routine(t_bfs **self, int *adj_num,
+			int v, t_queue **q)
+{
+	(*self)->edge_to[*adj_num] = v;
+	(*self)->dist_to[*adj_num] = (*self)->dist_to[v] + 1;
+	(*self)->marked[*adj_num] = 1;
+	enqueue(q, adj_num);
+}
 
 void	bfs(t_bfs **self, t_graph *graph, int s)
 {
@@ -28,7 +37,6 @@ void	bfs(t_bfs **self, t_graph *graph, int s)
 	(*self)->dist_to[s] = 0;
 	(*self)->marked[s] = 1;
 	enqueue(&q, &s);
-
 	while (!queue_is_empty(q))
 	{
 		v = *(int *)dequeue(&q);
@@ -37,12 +45,7 @@ void	bfs(t_bfs **self, t_graph *graph, int s)
 		{
 			adj_num = &((t_data *)w->content)->indx;
 			if (!(*self)->marked[*adj_num])
-			{
-				(*self)->edge_to[*adj_num] = v;
-				(*self)->dist_to[*adj_num] = (*self)->dist_to[v] + 1;
-				(*self)->marked[*adj_num] = 1;
-				enqueue(&q, adj_num);
-			}
+				bfs_routine(self, adj_num, v, &q);
 			w = w->next;
 		}
 	}

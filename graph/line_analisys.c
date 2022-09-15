@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:37:12 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/13 02:37:35 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 23:21:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	line_analisys(t_graph **me, char **line, int *num)
 {
+	t_list	*unit;
+
 	if (!(*num)++)
 		get_number(me, *line);
 	else if (!ft_strncmp(*line, "##start", 7))
@@ -24,5 +26,7 @@ void	line_analisys(t_graph **me, char **line, int *num)
 		delete_line(line);
 	else
 		parse_line(me, *line);
+	unit = ft_lstnew(ft_strdup(*line));
+	ft_lstadd_back(&(*me)->input_data, unit);
 	delete_line(line);
 }

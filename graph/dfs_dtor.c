@@ -12,7 +12,7 @@
 
 #include "depth_first_search.h"
 
-void		dfs_dtor(t_dfs_data **self)
+void	dfs_dtor(t_dfs_data **self)
 {
 	free((*self)->marked);
 	free((*self)->edge_to);

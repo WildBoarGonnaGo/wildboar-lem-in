@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_bag_iterator.c                                 :+:      :+:    :+:   */
+/*   check_prog_input.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 20:41:27 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 20:09:46 by                  ###   ########.fr       */
+/*   Created: 2022/09/15 09:07:15 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/16 00:35:03 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bag.h"
+#include "lem_in.h"
 
-t_st_bag_iterator	*new_bag_iterator(const t_st_bag *item)
+int	check_prog_input(int argc, char **input)
 {
-	t_st_bag_iterator	*it;
+	int	len;
 
-	it = (t_st_bag_iterator *)malloc(sizeof(t_st_bag_iterator));
-	if (!it)
-		err_println(12);
-	t_st_bag_iterator_ctor(&it, item);
-	return (it);
+	if (argc < 3)
+		return (0);
+	if (ft_strncmp(input[1], "<", 1))
+	{
+		ft_putendl_fd("no arrow", 1);
+		return (0);
+	}
+	len = ft_strlen(input[2]);
+	if (len < 5 || ft_strncmp(".map", *(input + 2) + len - 4, 4))
+		return (0);
+	return (1);
 }

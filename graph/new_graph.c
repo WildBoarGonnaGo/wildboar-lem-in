@@ -6,13 +6,13 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:37:38 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/11 16:24:25 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 17:05:42 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./graph.h"
+#include "graph.h"
 
-t_graph	*new_graph()
+t_graph	*new_graph(void)
 {
 	t_graph	*res;
 

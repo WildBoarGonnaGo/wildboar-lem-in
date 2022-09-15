@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:11:40 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/07 17:32:15 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 17:03:49 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include "../new.h"
 # include "../bag.h"
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_list	*node;
 	int		n;
 }	t_stack;
 
 void	stack_ctor(t_stack **self);
-t_stack	*new_stack();
+t_stack	*new_stack(void);
 void	stack_dtor(t_stack **self);
 void	delete_stack(t_stack **self);
 int		stack_is_empty(t_stack *self);

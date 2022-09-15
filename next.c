@@ -12,7 +12,8 @@
 
 #include "bag.h"
 
-t_list	*next(t_st_bag_iterator **self) {
+t_list	*next(t_st_bag_iterator **self)
+{
 	t_list	*res;
 
 	res = (*self)->it->next;

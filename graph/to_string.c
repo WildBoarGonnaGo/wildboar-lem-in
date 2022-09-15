@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:35:29 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/13 00:47:53 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 19:48:42 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,31 @@ void	gc_strjoin_2(char **src, char **dst)
 	del2 = NULL;
 }
 
+void	push_line(t_graph *me, char **res, int vert)
+{
+	t_data				*t_data_aux;
+	t_st_bag_iterator	*walker;
+
+	gc_strjoin(res, "\n");
+	t_data_aux = (t_data *)me->adj[vert]->node->content;
+	gc_strjoin(res, t_data_aux->name);
+	gc_strjoin(res, ": ");
+	walker = new_bag_iterator(me->adj[vert]);
+	while (has_next(walker))
+	{
+		t_data_aux = (t_data *)(next(&walker)->content);
+		gc_strjoin(res, t_data_aux->name);
+		if (has_next(walker))
+			gc_strjoin(res, ", ");
+	}
+	delete_bag_iterator(&walker);
+}
+
 char	*to_string(const t_graph *me)
 {
 	char				*res;
 	int					vert;
-	t_st_bag_iterator	*walker;
 	char				*aux;
-	t_data				*t_data_aux;
 
 	res = ft_strdup("Verticies: ");
 	aux = ft_itoa(me->v);
@@ -56,20 +74,6 @@ char	*to_string(const t_graph *me)
 	gc_strjoin_2(&res, &aux);
 	vert = -1;
 	while (++vert < me->v)
-	{
-		gc_strjoin(&res, "\n");
-		aux = ft_itoa(vert);
-		gc_strjoin_2(&res, &aux);
-		gc_strjoin(&res, ": ");
-		walker = new_bag_iterator(me->adj[vert]);
-		while (has_next(walker))
-		{
-			t_data_aux = (t_data *)(next(&walker)->content);
-			aux = ft_itoa(t_data_aux->indx);
-			gc_strjoin_2(&res, &aux);
-			if (has_next(walker))
-				gc_strjoin(&res, ", ");
-		}
-	}
+		push_line((t_graph *)me, &res, vert);
 	return (res);
 }

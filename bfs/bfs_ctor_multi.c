@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 17:03:08 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/13 20:59:57 by                  ###   ########.fr       */
+/*   Updated: 2022/09/15 14:48:23 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,23 @@ void	validate_vertecies(t_st_bag *bag, t_graph *graph)
 		err_println_str("zero verticies\n");
 }
 
+void	aux_bfs_multi(t_bfs **self, t_list **lst, int aux, t_queue **q)
+{
+	int	*w;
+
+	w = (int *)(*lst)->content;
+	(*self)->edge_to[*w] = aux;
+	(*self)->dist_to[*w] = (*self)->dist_to[aux + 1];
+	(*self)->dist_to[*w] = 1;
+	enqueue(q, w);
+	(*lst) = (*lst)->next;
+}
+
 void	bfs_multi(t_bfs **self, t_graph *graph, t_st_bag *bag)
 {
 	t_queue	*q;
 	t_list	*roll;
 	int		aux;
-	int		w;
 
 	q = new_queue();
 	roll = bag->node;
@@ -54,14 +65,7 @@ void	bfs_multi(t_bfs **self, t_graph *graph, t_st_bag *bag)
 		aux = *(int *)dequeue(&q);
 		roll = graph->adj[aux]->node;
 		while (roll)
-		{
-			w = *(int *)roll->content;
-			(*self)->edge_to[w] = aux;
-			(*self)->dist_to[w] = (*self)->dist_to[aux + 1];
-			(*self)->dist_to[w] = 1;
-			enqueue(&q, &w);
-			roll = roll->next;
-		}
+			aux_bfs_multi(self, &roll, aux, &q);
 	}
 	delete_queue(&q);
 }

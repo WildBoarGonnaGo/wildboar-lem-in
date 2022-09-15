@@ -6,18 +6,18 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:25:18 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/13 02:25:19 by lchantel         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:02:14 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graph_ctor_in.h"
 
-int		is_number(char *line)
+int	is_number(char *line)
 {
 	int	i;
 
 	i = -1;
-	while(ft_isdigit(line[++i]))
+	while (ft_isdigit(line[++i]))
 		;
 	if (!line[i])
 		return (1);

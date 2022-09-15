@@ -12,7 +12,7 @@
 
 #include "graph.h"
 
-void		delete_graph_2(t_graph **self)
+void	delete_graph_2(t_graph **self)
 {
 	graph_dtor_2(self);
 	free(*self);

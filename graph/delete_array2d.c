@@ -17,7 +17,7 @@ void	delete_array2d(void **mem)
 	int	i;
 
 	i = -1;
-	while(mem[++i])
+	while (mem[++i])
 	{
 		free(mem[i]);
 		mem[i] = NULL;

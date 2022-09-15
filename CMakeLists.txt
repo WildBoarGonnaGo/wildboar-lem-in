@@ -6,13 +6,13 @@ set(CMAKE_C_COMPILER gcc)
 add_compile_options(-Wall -Wextra -Werror -g -O0 -D BUFFER_SIZE=512)
 # file(GLOB LIBFT_SRC ./libft/*.c)
 
-add_executable(${PROJECT_NAME} add.c data_dtor.c
-    del_list.c del_list2.c delete_bag.c delete_bag_2.c
-    delete_bag_iterator.c delete_data.c
-    err_println.c err_println_str.c has_next.c
-    is_empty.c main.c new_bag.c new_bag_iterator.c
-    next.c size.c st_bag_copy_assign.c st_bag_ctor.c st_bag_dtor.c
-    st_bag_dtor_2.c t_st_bag_iterator_ctor.c t_st_bag_iterator_dtor.c
+add_executable(${PROJECT_NAME} add.c arr_path.c data_dtor.c
+    check_prog_input.c del_list.c del_list2.c delete_arrs.c
+    delete_bag.c delete_bag_2.c delete_bag_iterator.c delete_data.c
+    err_println.c err_println_str.c forwarding.c ft_stack_itoa.c
+    has_next.c is_empty.c list_priority_push.c main.c new_bag.c
+    new_bag_iterator.c next.c routing.c size.c st_bag_copy_assign.c
+    st_bag_ctor.c st_bag_dtor.c st_bag_dtor_2.c t_st_bag_iterator_ctor.c t_st_bag_iterator_dtor.c
     delete_bag_iterator.c gnl/get_next_line.c del_list.c del_list2.c
 
         gnl/get_next_line_utils.c graph/add_edge.c graph/add_vertex.c
