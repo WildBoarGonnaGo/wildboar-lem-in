@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_analisys.c                                    :+:      :+:    :+:   */
+/*   bfs_data_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 02:37:12 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/16 00:42:21 by                  ###   ########.fr       */
+/*   Created: 2022/09/16 11:49:41 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/16 11:53:31 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph_ctor_in.h"
+#include "bfs.h"
 
-void	line_analisys(t_graph **me, char **line, int *num)
+void	bfs_data_init(t_bfs **self)
 {
-	t_list	*unit;
+	int	i;
 
-	if (!(*num)++)
-		get_number(me, *line);
-	else if (!ft_strncmp(*line, "##start", 7))
-		mark_start(me);
-	else if (!ft_strncmp(*line, "##end", 5))
-		mark_end(me);
-	else if (*line[0] != '#')
-		parse_line(me, *line);
-	unit = ft_lstnew(ft_strdup(*line));
-	ft_lstadd_back(&(*me)->input_data, unit);
-	delete_line(line);
+	i = -1;
+	while (++i < (*self)->len)
+		(*self)->marked[i] = 0;
+	i = -1;
+	while (++i < (*self)->len)
+		(*self)->edge_to[i] = (*self)->src;
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "graph/depth_first_search.h"
-#include "graph/stack.h"
+#include "stack/stack.h"
 #include "queue/queue.h"
 #include <stdio.h>
 #include "lem_in.h"

@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:01:31 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 13:27:31 by                  ###   ########.fr       */
+/*   Updated: 2022/09/16 15:45:29 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	build_frame(int *num, t_graph **graph,
 	if (!data[1]->ants || queue_is_empty(data[1]->ants))
 		num[2] = 0;
 	if (!num[0])
-		--(*graph)->ants_num;
+		++num[6];
 	if (data[0]->ants && !queue_is_empty(data[0]->ants))
 		aux_build_frame(&data[0], &data[1], num, str);
 	if (!num[2])
@@ -70,7 +70,8 @@ int	roll_it(t_list **roll, t_graph **graph,
 	num[1] = aux->size;
 	if (!aux->main_path && aux->size - 2 > (*graph)->ants_num && !aux->ogate)
 		return (0);
-	else if (!aux->main_path && aux->size - 2 <= (*graph)->ants_num)
+	else
+		if (!aux->main_path && aux->size - 2 <= (*graph)->ants_num)
 			aux->ogate = 1;
 	data[0] = (t_data *)adj[aux->arr[num[0]]]->node->content;
 	while (!data[0]->ants)
@@ -80,15 +81,15 @@ int	roll_it(t_list **roll, t_graph **graph,
 	while (num[0] < aux->size - 1)
 	{
 		if (!build_frame(num, graph, aux, str))
-			return (0);
+			return (1);
 	}
-	(*roll) = (*roll)->next;
+	(*graph)->ants_num -= num[6];
 	return (1);
 }
 
 t_list	*forwarding(t_list **list_path, t_graph **graph)
 {
-	int		num[6];
+	int		num[7];
 	t_list	*roll;
 	char	str[512];
 
@@ -99,8 +100,10 @@ t_list	*forwarding(t_list **list_path, t_graph **graph)
 	num[4] = 0;
 	while (roll)
 	{
+		num[6] = 0;
 		if (!roll_it(&roll, graph, num, str))
 			break ;
+		roll = roll->next;
 	}
 	if (!str[0])
 		return (NULL);

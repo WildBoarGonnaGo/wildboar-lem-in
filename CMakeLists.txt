@@ -17,20 +17,27 @@ add_executable(${PROJECT_NAME} add.c arr_path.c data_dtor.c
 
         gnl/get_next_line_utils.c graph/add_edge.c graph/add_vertex.c
         graph/adj.c graph/alloc_array.c graph/check_input_data.c graph/delete_array2d.c
-        graph/delete_dfs_data.c graph/delete_graph.c graph/delete_graph_2.c
-        graph/delete_line.c graph/delete_stack.c
-        graph/dfs_ctor.c graph/dfs_dtor.c graph/get_number.c
+        graph/delete_graph.c graph/delete_graph_2.c
+        graph/delete_line.c
+        graph/get_number.c
         graph/graph_ctor_in.c graph/graph_dtor.c graph/graph_dtor_2.c
-        graph/graph_init.c graph/stack_is_empty.c
+        graph/graph_init.c
         graph/is_number.c graph/line_analisys.c graph/mark_end.c graph/mark_start.c
-        graph/new_dfs_data.c graph/new_graph.c graph/new_stack.c graph/peek.c graph/pop.c
-        graph/push.c graph/stack_ctor.c graph/stack_dtor.c graph/parse_line.c
+        graph/new_graph.c
+        graph/parse_line.c
         graph/to_string.c graph/validate_vertex.c
+
+        dfs/delete_dfs_data.c dfs/dfs_ctor.c dfs/dfs_dtor.c dfs/has_path_to.c
+        dfs/new_dfs_data.c
+
+        stack/delete_stack.c stack/new_stack.c stack/peek.c stack/peek.c
+        stack/pop.c stack/push.c stack/stack_ctor.c stack/stack_dtor.c
+        stack/stack_is_empty.c
 
         queue/delete_queue.c queue/dequeue.c queue/enqueue.c queue/new_queue.c
         queue/queue_peek.c queue/queue_ctor.c queue/queue_dtor.c queue/queue_is_empty.c
 
-        bfs/bfs_ctor.c bfs/bfs_ctor_multi.c bfs/bfs_dist_to.c bfs/bfs_dtor.c
+        bfs/bfs.c bfs/bfs_ctor.c bfs/bfs_ctor_multi.c bfs/bfs_data_init.c bfs/bfs_dist_to.c bfs/bfs_dtor.c
         bfs/bfs_has_path_to.c bfs/bfs_path_to.c bfs/bfs_validate_vertex.c
         bfs/delete_bfs.c bfs/new_bfs.c bfs/new_bfs_multi.c
         )
@@ -41,4 +48,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/gnl
         ${PROJECT_SOURCE_DIR}/graph
         ${PROJECT_SOURCE_DIR}/queue
-        ${PROJECT_SOURCE_DIR}/bfs)
+        ${PROJECT_SOURCE_DIR}/bfs
+        ${PROJECT_SOURCE_DIR}/dfs
+        ${PROJECT_SOURCE_DIR}/stack)

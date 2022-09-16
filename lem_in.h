@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 09:02:04 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 21:40:31 by                  ###   ########.fr       */
+/*   Updated: 2022/09/16 14:55:35 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ typedef struct s_arr_struct
 	int	ogate;
 }	t_arr_struct;
 
-t_arr_struct	*arr_path(t_bfs *bfs, int *v, int end);
+t_arr_struct	*arr_path(t_bfs **bfs, int *end);
 int				check_prog_input(int argc, char **input);
-void			list_priority_push(t_list **list, t_bfs *bfs,
-					t_st_bag *bag, int end);
+void			list_priority_push(t_list **list, t_bfs **bfs);
 t_list			*routing(t_graph *graph);
 void			ft_stack_itoa(char **str, long n, int *r);
 t_list			*forwarding(t_list **list_path, t_graph **graph);
