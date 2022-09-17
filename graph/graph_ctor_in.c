@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:38:38 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 16:56:41 by                  ###   ########.fr       */
+/*   Updated: 2022/09/17 09:14:13 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	graph_ctor_in(t_graph **me)
 	int		num;
 
 	graph_init(me, &num);
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(0, &line) > 0 && line && *line)
 		line_analisys(me, &line, &num);
-	if (line)
+	if (line && *line)
 		line_analisys(me, &line, &num);
 	check_input_data(*me);
 }
