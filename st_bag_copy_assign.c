@@ -44,9 +44,9 @@ t_data	*t_data_copy(t_data *src)
 	}
 	else
 		dst->name = NULL;
-	dst->ants = new_queue();
 	if (src->ants)
 	{
+        dst->ants = new_queue();
 		while (src->ants && !queue_is_empty(src->ants))
 			enqueue(&dst->ants, dequeue(&src->ants));
 		delete_queue(&src->ants);

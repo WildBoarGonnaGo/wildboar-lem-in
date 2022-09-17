@@ -44,6 +44,7 @@ void	mark_verticies(t_bfs **bfs, t_arr_struct *pool)
 		if (!(*bfs)->v_mark)
 			err_println(EFAULT);
 		(*bfs)->v_mark->end = NULL;
+        (*bfs)->v_mark->node = NULL;
 	}
 	while (++i < pool->size - 1)
 	{
@@ -54,7 +55,7 @@ void	mark_verticies(t_bfs **bfs, t_arr_struct *pool)
 			(*bfs)->v_mark->end = (*bfs)->v_mark->node;
 		else
 			(*bfs)->v_mark->end = (*bfs)->v_mark->end->next;
-	}
+    }
 }
 
 t_arr_struct	*arr_path(t_bfs **bfs_obj, int *end)

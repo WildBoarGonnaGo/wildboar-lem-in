@@ -20,5 +20,10 @@ void	graph_dtor_2(t_graph **self)
 	while (++i < (*self)->v)
 		delete_bag_2(&(*self)->adj[i]);
 	free((*self)->adj);
+    if ((*self)->ants)
+    {
+        free((*self)->ants);
+        (*self)->ants = NULL;
+    }
 	(*self)->adj = NULL;
 }

@@ -14,6 +14,11 @@
 
 void	bfs_dtor(t_bfs **self)
 {
+    if ((*self)->v_mark)
+    {
+        free((*self)->v_mark);
+        (*self)->v_mark = NULL;
+    }
 	free((*self)->marked);
 	(*self)->marked = NULL;
 	free((*self)->edge_to);

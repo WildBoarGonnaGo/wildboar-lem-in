@@ -21,7 +21,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 	{
 		roll = *lst;
-		while (roll->next)
+                while (roll->next != NULL)
 			roll = roll->next;
 		roll->next = new;
 	}

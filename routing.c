@@ -43,6 +43,7 @@ t_list	*routing(t_graph *graph)
 		}
 	}
 	ft_lstclear(&start_bfs->v_mark->node, del_list);
+    start_bfs->v_mark->end = NULL;
 	delete_bfs(&start_bfs);
 	return (list);
 }
