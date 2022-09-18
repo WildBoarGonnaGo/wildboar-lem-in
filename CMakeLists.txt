@@ -16,7 +16,9 @@ add_executable(${PROJECT_NAME} add.c arr_path.c data_dtor.c
     delete_bag_iterator.c gnl/get_next_line.c del_list.c del_list2.c
 
         gnl/get_next_line_utils.c graph/add_edge.c graph/add_vertex.c
-        graph/adj.c graph/alloc_array.c graph/check_input_data.c graph/delete_array2d.c
+        graph/adj.c graph/alloc_array.c graph/check_input_data.c
+        graph/check_verticies.c graph/check_verticies_messages.c
+        graph/delete_array2d.c
         graph/delete_graph.c graph/delete_graph_2.c
         graph/delete_line.c
         graph/get_number.c

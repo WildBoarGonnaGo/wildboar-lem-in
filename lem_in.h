@@ -27,7 +27,7 @@ typedef struct s_arr_struct
 t_arr_struct	*arr_path(t_bfs **bfs, int *end);
 int				check_prog_input(int argc, char **input);
 void			list_priority_push(t_list **list, t_bfs **bfs);
-t_list			*routing(t_graph *graph);
+t_list			*routing(t_graph **graph);
 void			ft_stack_itoa(char **str, long n, int *r);
 t_list			*forwarding(t_list **list_path, t_graph **graph);
 void			delete_arrs(t_list **list_path);

@@ -6,13 +6,52 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:09:52 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 14:55:04 by                  ###   ########.fr       */
+/*   Updated: 2022/09/18 20:19:17 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graph.h"
 
-int	seek_indx(t_graph *me, char *str)
+void	delete_str_edge_2d(char **str)
+{
+	int	i;
+
+	i = -1;
+	if (!str || !*str)
+		return ;
+	while (str[++i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+	}
+	free(str);
+	str = NULL;
+}
+
+void	vertex_seek_failure(t_graph **me, char **str, char *line, int indx)
+{
+	char	v_str[128];
+	char	*aux;
+	int		i;
+
+	i = -1;
+	ft_bzero(v_str, 128);
+	aux = ft_strdup("no such vertex: ");
+	while (aux[++i])
+		v_str[i] = aux[i];
+	free(aux);
+	aux = str[indx];
+	while (aux)
+		v_str[i++] = *(aux++);
+	aux = NULL;
+	delete_str_edge_2d(str);
+	delete_graph_2(me);
+	free(line);
+	line = NULL;
+	err_println_str(v_str);
+}
+
+int	seek_indx(t_graph **me, char *str)
 {
 	int		i;
 	int		res;
@@ -20,17 +59,15 @@ int	seek_indx(t_graph *me, char *str)
 
 	res = -1;
 	i = -1;
-	while (++i < me->v)
+	while (++i < (*me)->v)
 	{
-		tmp = (t_data *)(me->adj[i]->begin->content);
+		tmp = (t_data *)((*me)->adj[i]->begin->content);
 		if (!ft_strncmp(str, tmp->name, ft_strlen(str)))
 		{
 			res = tmp->indx;
 			break ;
 		}
 	}
-	if (res == -1)
-		err_println_str("no such vertex");
 	return (res);
 }
 
@@ -52,14 +89,18 @@ t_data	*cp_data(t_graph *me, int src)
 	return (res);
 }
 
-void	add_edge(t_graph **me, char *v, char *w)
+void	add_edge(t_graph **me, char **str, char *line)
 {
 	t_data	*alloc_v;
 	t_data	*alloc_w;
 	int		node[2];
 
-	node[0] = seek_indx(*me, v);
-	node[1] = seek_indx(*me, w);
+	node[0] = seek_indx(me, str[0]);
+	if (node[0] < 0)
+		vertex_seek_failure(me, str, line, 0);
+	node[1] = seek_indx(me, str[1]);
+	if (node[1] < 0)
+		vertex_seek_failure(me, str, line, 1);
 	validate_vertex(*me, node[0]);
 	validate_vertex(*me, node[1]);
 	++(*me)->e;

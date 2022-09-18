@@ -24,7 +24,7 @@ void	alloc_array(t_graph **me);
 void	add_vertex(t_graph **me, char *line);
 void	delete_line(char **line);
 void	parse_line(t_graph **me, char *line);
-void	check_input_data(const t_graph *me);
+void	check_input_data(t_graph **me);
 void	line_analisys(t_graph **me, char **line, int *num);
 
 #endif

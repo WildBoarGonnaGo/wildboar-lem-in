@@ -68,7 +68,7 @@ int	main(void)
 	graph = new_graph();
 	data_output(graph);
 	ft_lstclear(&graph->input_data, del_list2);
-	final[0] = routing(graph);
+	final[0] = routing(&graph);
 	final[1] = forwarding(&final[0], &graph);
 	move_it(&final[1], &final[0], &graph);
 	delete_arrs(&final[0]);

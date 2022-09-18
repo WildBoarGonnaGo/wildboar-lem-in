@@ -19,9 +19,9 @@ void	graph_ctor_in(t_graph **me)
 	int		num;
 
 	graph_init(me, &num);
-	while (get_next_line(0, &line) > 0 && line && *line)
+	while (get_next_line(0, &line) > 0)
 		line_analisys(me, &line, &num);
-	if (line && *line)
+	if (line)
 		line_analisys(me, &line, &num);
-	check_input_data(*me);
+	check_input_data(me);
 }

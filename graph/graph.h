@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:43:32 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/15 16:56:24 by                  ###   ########.fr       */
+/*   Updated: 2022/09/18 19:37:24 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ typedef struct s_graph
 void		graph_ctor_in(t_graph **me);
 void		graph_dtor(t_graph **me, void (*del)(void *));
 void		validate_vertex(const t_graph *me, int v);
-void		add_edge(t_graph **me, char *v, char *w);
+void		add_edge(t_graph **me, char **str, char *line);
 t_st_bag	*adj(const t_graph *me, int v);
 char		*to_string(const t_graph *me);
 t_graph		*new_graph(void);
 void		delete_graph(t_graph **self, void (*del)(void *));
 void		delete_graph_2(t_graph **self);
 void		graph_dtor_2(t_graph **self);
+void		check_verticies(t_graph **me, char *line);
+void		check_verticies_messages(t_graph **me,
+				 char *line, char *msg);
 
 #endif

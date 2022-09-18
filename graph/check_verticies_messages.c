@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   check_verticies_messages.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchantel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 10:44:06 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/17 20:42:21 by                  ###   ########.fr       */
+/*   Created: 2022/09/18 19:36:41 by lchantel          #+#    #+#             */
+/*   Updated: 2022/09/18 19:38:32 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "graph.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	purge_line(void *line)
 {
-	t_list	*roll;
-
-	if (!*lst)
-		*lst = new;
-	else
+	if (line)
 	{
-		roll = *lst;
-                while (roll->next != NULL)
-			roll = roll->next;
-		roll->next = new;
+		free(line);
+		line = NULL;
 	}
+}
+
+void	check_verticies_messages(t_graph **me, char *line, char *msg)
+{
+	delete_graph_2(me);
+	purge_line(line);
+	err_println_str(msg);
 }

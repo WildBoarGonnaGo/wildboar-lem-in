@@ -29,15 +29,7 @@ default_target: all
 % : RCS/%,v
 
 
-# Disable VCS-based implicit rules.
-% : SCCS/s.%
-
-
-# Disable VCS-based implicit rules.
-% : s.%
-
-
-.SUFFIXES: .hpux_make_needs_suffix_list
+# Disable VCS-based im#   Updated: 2022/09/18 21:55:49 by                  ###   ########.fr       #FFIXES: .hpux_make_needs_suffix_list
 
 
 # Command-line flag to silence nested $(MAKE).
