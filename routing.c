@@ -28,7 +28,7 @@ void	route_table(t_bfs **start_bfs,
 void	no_route_error(t_graph **graph)
 {
 	delete_graph_2(graph);
-	err_println_str("There no route between from start to end verticies");
+    err_println_str("There is no route between from start to end verticies");
 }
 
 t_list	*routing(t_graph **graph)

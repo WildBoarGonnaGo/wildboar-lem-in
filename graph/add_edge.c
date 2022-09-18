@@ -32,17 +32,23 @@ void	vertex_seek_failure(t_graph **me, char **str, char *line, int indx)
 {
 	char	v_str[128];
 	char	*aux;
-	int		i;
+    int		i[3];
 
-	i = -1;
+    i[0] = -1;
 	ft_bzero(v_str, 128);
-	aux = ft_strdup("no such vertex: ");
-	while (aux[++i])
-		v_str[i] = aux[i];
+    aux = ft_strdup("there is no such vertex: ");
+    while (aux[++i[0]])
+    {
+        v_str[i[0]] = aux[i[0]];
+    }
 	free(aux);
 	aux = str[indx];
-	while (aux)
-		v_str[i++] = *(aux++);
+    i[1] = -1;
+    i[2] = ft_strlen(aux);
+    while (++i[1] < i[2])
+    {
+        v_str[i[0]++] = aux[i[1]];
+    }
 	aux = NULL;
 	delete_str_edge_2d(str);
 	delete_graph_2(me);
