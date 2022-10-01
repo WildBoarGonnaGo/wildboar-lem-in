@@ -12,12 +12,18 @@
 
 #include "graph_ctor_in.h"
 
-void	mark_start(t_graph **me)
+void	start_fail(t_graph **me, char *line)
 {
-	if ((*me)->end == -1)
-		err_println_str("start and end point can't be the same");
+	free(line);
+	line = NULL;
+	delete_graph_2(me);
+	err_println_str("start point is already marked");
+}
+
+void	mark_start(t_graph **me, char *line)
+{
 	if ((*me)->start >= 0)
-		err_println_str("start point is already marked");
+		start_fail(me, line);
 	else if ((*me)->start == -2)
 		(*me)->start = -1;
 }

@@ -15,8 +15,8 @@
 # include "graph.h"
 
 void	graph_init(t_graph **me, int *num);
-void	mark_start(t_graph **me);
-void	mark_end(t_graph **me);
+void	mark_start(t_graph **me, char *line);
+void	mark_end(t_graph **me, char *line);
 void	get_number(t_graph **me, char *line);
 int		is_number(char *line);
 void	delete_array2d(void **mem);

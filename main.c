@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:32:10 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/16 02:06:51 by                  ###   ########.fr       */
+/*   Updated: 2022/09/18 23:50:58 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	main(void)
 	t_list	*final[3];
 
 	graph = new_graph();
-    final[0] = routing(&graph);
-    data_output(graph);
+	data_output(graph);
 	ft_lstclear(&graph->input_data, del_list2);
+	final[0] = routing(&graph);
 	final[1] = forwarding(&final[0], &graph);
 	move_it(&final[1], &final[0], &graph);
 	delete_arrs(&final[0]);

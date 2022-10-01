@@ -6,18 +6,24 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:22:50 by lchantel          #+#    #+#             */
-/*   Updated: 2022/07/13 02:22:52 by lchantel         ###   ########.fr       */
+/*   Updated: 2022/09/19 08:46:45 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graph_ctor_in.h"
 
-void	mark_end(t_graph **me)
+void	end_fail(t_graph **me, char *line)
 {
-	if ((*me)->start == -1)
-		err_println_str("start and end point can't be the same");
+	free(line);
+	line = NULL;
+	delete_graph_2(me);
+	err_println_str("start point is already marked");
+}
+
+void	mark_end(t_graph **me, char *line)
+{
 	if ((*me)->end >= 0)
-		err_println_str("end point is already marked");
+		end_fail(me, line);
 	else if ((*me)->end == -2)
 		(*me)->end = -1;
 }

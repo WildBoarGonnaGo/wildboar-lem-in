@@ -6,7 +6,7 @@
 /*   By: lchantel <lchantel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:16:37 by lchantel          #+#    #+#             */
-/*   Updated: 2022/09/18 21:40:27 by                  ###   ########.fr       */
+/*   Updated: 2022/09/18 23:50:58 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	route_table(t_bfs **start_bfs,
 void	no_route_error(t_graph **graph)
 {
 	delete_graph_2(graph);
-    err_println_str("There is no route between from start to end verticies");
+	err_println_str("There no route between from start to end verticies");
 }
 
 t_list	*routing(t_graph **graph)
